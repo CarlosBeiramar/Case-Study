@@ -1,0 +1,437 @@
+[
+  {
+    "id": 1,
+    "title": "Advanced Web Development",
+    "description": "Dive into advanced web development concepts, focusing on JavaScript frameworks, server-side development, and databases.",
+    "modules": [
+      {
+        "id": 6,
+        "title": "JavaScript Frameworks",
+        "lessons": [
+          {
+            "id": 8,
+            "title": "Introduction to React",
+            "description": "Learn the basics of React, a popular JavaScript framework for building user interfaces.",
+            "topics": [
+              "React components",
+              "JSX",
+              "State and props"
+            ],
+            "content": [
+              {
+                "type": "text",
+                "data": "React is a JavaScript library for building user interfaces, maintained by Facebook."
+              },
+              {
+                "type": "video",
+                "data": "https://example.com/react-introduction-video"
+              }
+            ]
+          },
+          {
+            "id": 9,
+            "title": "Understanding Vue",
+            "description": "Explore Vue.js and how it differs from other JavaScript frameworks.",
+            "topics": [
+              "Vue instances",
+              "Templates",
+              "Vue directives"
+            ],
+            "content": [
+              {
+                "type": "text",
+                "data": "Vue.js is an open-source JavaScript framework for building user interfaces and single-page applications."
+              },
+              {
+                "type": "video",
+                "data": "https://example.com/vue-overview-video"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": 7,
+        "title": "Server-Side Development",
+        "lessons": [
+          {
+            "id": 10,
+            "title": "Node.js Basics",
+            "description": "Learn the fundamentals of Node.js and its role in server-side JavaScript.",
+            "topics": [
+              "Node.js environment",
+              "Modules and packages",
+              "File system operations"
+            ],
+            "content": [
+              {
+                "type": "text",
+                "data": "Node.js allows JavaScript to run on the server, offering a fast and scalable solution."
+              },
+              {
+                "type": "audio",
+                "data": "https://example.com/node-intro-audio"
+              }
+            ]
+          },
+          {
+            "id": 11,
+            "title": "Express.js for Web Servers",
+            "description": "Get started with Express.js, a Node.js framework for building web servers.",
+            "topics": [
+              "Setting up a server",
+              "Routing",
+              "Middleware"
+            ],
+            "content": [
+              {
+                "type": "text",
+                "data": "Express.js is a flexible Node.js web application framework that provides tools for building robust servers."
+              },
+              {
+                "type": "video",
+                "data": "https://example.com/express-basics-video"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": 8,
+        "title": "Database Management",
+        "lessons": [
+          {
+            "id": 12,
+            "title": "Introduction to SQL",
+            "description": "Learn SQL, the standard language for managing relational databases.",
+            "topics": [
+              "SQL syntax",
+              "CRUD operations",
+              "Database normalization"
+            ],
+            "content": [
+              {
+                "type": "text",
+                "data": "SQL (Structured Query Language) is used to manage data in relational databases like MySQL and PostgreSQL."
+              },
+              {
+                "type": "video",
+                "data": "https://example.com/sql-intro-video"
+              }
+            ]
+          },
+          {
+            "id": 13,
+            "title": "NoSQL Databases",
+            "description": "Explore NoSQL databases like MongoDB, designed for unstructured data.",
+            "topics": [
+              "Key-value stores",
+              "Document-oriented databases",
+              "Scalability"
+            ],
+            "content": [
+              {
+                "type": "text",
+                "data": "NoSQL databases provide flexible schemas and are suited for large-scale data applications."
+              },
+              {
+                "type": "video",
+                "data": "https://example.com/nosql-databases-video"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "title": "Advanced Web Development",
+    "description": "Dive into advanced web development concepts, focusing on JavaScript frameworks, server-side development, and databases.",
+    "modules": [
+      {
+        "id": 9,
+        "title": "JavaScript Frameworks",
+        "lessons": [
+          {
+            "id": 14,
+            "title": "Introduction to React",
+            "description": "Learn the basics of React, a popular JavaScript framework for building user interfaces.",
+            "topics": [
+              "React components",
+              "JSX",
+              "State and props"
+            ],
+            "content": [
+              {
+                "type": "text",
+                "data": "React is a JavaScript library for building user interfaces, maintained by Facebook."
+              },
+              {
+                "type": "video",
+                "data": "https://example.com/react-introduction-video"
+              }
+            ]
+          },
+          {
+            "id": 15,
+            "title": "Understanding Vue",
+            "description": "Explore Vue.js and how it differs from other JavaScript frameworks.",
+            "topics": [
+              "Vue instances",
+              "Templates",
+              "Vue directives"
+            ],
+            "content": [
+              {
+                "type": "text",
+                "data": "Vue.js is an open-source JavaScript framework for building user interfaces and single-page applications."
+              },
+              {
+                "type": "video",
+                "data": "https://example.com/vue-overview-video"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": 10,
+        "title": "Server-Side Development",
+        "lessons": [
+          {
+            "id": 16,
+            "title": "Node.js Basics",
+            "description": "Learn the fundamentals of Node.js and its role in server-side JavaScript.",
+            "topics": [
+              "Node.js environment",
+              "Modules and packages",
+              "File system operations"
+            ],
+            "content": [
+              {
+                "type": "text",
+                "data": "Node.js allows JavaScript to run on the server, offering a fast and scalable solution."
+              },
+              {
+                "type": "audio",
+                "data": "https://example.com/node-intro-audio"
+              }
+            ]
+          },
+          {
+            "id": 17,
+            "title": "Express.js for Web Servers",
+            "description": "Get started with Express.js, a Node.js framework for building web servers.",
+            "topics": [
+              "Setting up a server",
+              "Routing",
+              "Middleware"
+            ],
+            "content": [
+              {
+                "type": "text",
+                "data": "Express.js is a flexible Node.js web application framework that provides tools for building robust servers."
+              },
+              {
+                "type": "video",
+                "data": "https://example.com/express-basics-video"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": 11,
+        "title": "Database Management",
+        "lessons": [
+          {
+            "id": 18,
+            "title": "Introduction to SQL",
+            "description": "Learn SQL, the standard language for managing relational databases.",
+            "topics": [
+              "SQL syntax",
+              "CRUD operations",
+              "Database normalization"
+            ],
+            "content": [
+              {
+                "type": "text",
+                "data": "SQL (Structured Query Language) is used to manage data in relational databases like MySQL and PostgreSQL."
+              },
+              {
+                "type": "video",
+                "data": "https://example.com/sql-intro-video"
+              }
+            ]
+          },
+          {
+            "id": 19,
+            "title": "NoSQL Databases",
+            "description": "Explore NoSQL databases like MongoDB, designed for unstructured data.",
+            "topics": [
+              "Key-value stores",
+              "Document-oriented databases",
+              "Scalability"
+            ],
+            "content": [
+              {
+                "type": "text",
+                "data": "NoSQL databases provide flexible schemas and are suited for large-scale data applications."
+              },
+              {
+                "type": "video",
+                "data": "https://example.com/nosql-databases-video"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "title": "Advanced Web Development",
+    "description": "Dive into advanced web development concepts, focusing on JavaScript frameworks, server-side development, and databases.",
+    "modules": [
+      {
+        "id": 12,
+        "title": "JavaScript Frameworks",
+        "lessons": [
+          {
+            "id": 20,
+            "title": "Introduction to React",
+            "description": "Learn the basics of React, a popular JavaScript framework for building user interfaces.",
+            "topics": [
+              "React components",
+              "JSX",
+              "State and props"
+            ],
+            "content": [
+              {
+                "type": "text",
+                "data": "React is a JavaScript library for building user interfaces, maintained by Facebook."
+              },
+              {
+                "type": "video",
+                "data": "https://example.com/react-introduction-video"
+              }
+            ]
+          },
+          {
+            "id": 21,
+            "title": "Understanding Vue",
+            "description": "Explore Vue.js and how it differs from other JavaScript frameworks.",
+            "topics": [
+              "Vue instances",
+              "Templates",
+              "Vue directives"
+            ],
+            "content": [
+              {
+                "type": "text",
+                "data": "Vue.js is an open-source JavaScript framework for building user interfaces and single-page applications."
+              },
+              {
+                "type": "video",
+                "data": "https://example.com/vue-overview-video"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": 13,
+        "title": "Server-Side Development",
+        "lessons": [
+          {
+            "id": 22,
+            "title": "Node.js Basics",
+            "description": "Learn the fundamentals of Node.js and its role in server-side JavaScript.",
+            "topics": [
+              "Node.js environment",
+              "Modules and packages",
+              "File system operations"
+            ],
+            "content": [
+              {
+                "type": "text",
+                "data": "Node.js allows JavaScript to run on the server, offering a fast and scalable solution."
+              },
+              {
+                "type": "audio",
+                "data": "https://example.com/node-intro-audio"
+              }
+            ]
+          },
+          {
+            "id": 23,
+            "title": "Express.js for Web Servers",
+            "description": "Get started with Express.js, a Node.js framework for building web servers.",
+            "topics": [
+              "Setting up a server",
+              "Routing",
+              "Middleware"
+            ],
+            "content": [
+              {
+                "type": "text",
+                "data": "Express.js is a flexible Node.js web application framework that provides tools for building robust servers."
+              },
+              {
+                "type": "video",
+                "data": "https://example.com/express-basics-video"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": 14,
+        "title": "Database Management",
+        "lessons": [
+          {
+            "id": 24,
+            "title": "Introduction to SQL",
+            "description": "Learn SQL, the standard language for managing relational databases.",
+            "topics": [
+              "SQL syntax",
+              "CRUD operations",
+              "Database normalization"
+            ],
+            "content": [
+              {
+                "type": "text",
+                "data": "SQL (Structured Query Language) is used to manage data in relational databases like MySQL and PostgreSQL."
+              },
+              {
+                "type": "video",
+                "data": "https://example.com/sql-intro-video"
+              }
+            ]
+          },
+          {
+            "id": 25,
+            "title": "NoSQL Databases",
+            "description": "Explore NoSQL databases like MongoDB, designed for unstructured data.",
+            "topics": [
+              "Key-value stores",
+              "Document-oriented databases",
+              "Scalability"
+            ],
+            "content": [
+              {
+                "type": "text",
+                "data": "NoSQL databases provide flexible schemas and are suited for large-scale data applications."
+              },
+              {
+                "type": "video",
+                "data": "https://example.com/nosql-databases-video"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+]
