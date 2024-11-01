@@ -44,12 +44,12 @@ describe("createCourse", () => {
     jest.clearAllMocks();
   });
 
-  it("should handle errors and return 500", () => {
+  it("should handle errors and return 500", async () => {
     (readFromFile as jest.Mock).mockImplementation(() => {
       throw new Error("File read error");
     });
 
-    createCourse(req as Request, res as Response);
+    await createCourse(req as Request, res as Response);
 
     expect(statusMock).toHaveBeenCalledWith(500);
     expect(jsonMock).toHaveBeenCalledWith({ message: "Internal Server Error." });

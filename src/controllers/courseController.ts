@@ -5,9 +5,9 @@ import express, { Request, Response, RequestHandler } from 'express';
 import { readFromFile, writeToFile, moduleFilePath, coursesFilePath, lessonsFilePath } from "../utils/FileHandlers";
 import logger from '../utils/logger';
 
-export const getAllCourses = (req: Request, res: Response) => {
+export const getAllCourses = async (req: Request, res: Response) => {
   try {
-    const courses = readFromFile(coursesFilePath);
+    const courses: Course[] = await readFromFile(coursesFilePath);
 
     const page = parseInt(req.query.page as string, 10) || 1;
     const limit = parseInt(req.query.limit as string, 10) || 10;
@@ -35,10 +35,10 @@ export const getAllCourses = (req: Request, res: Response) => {
   }
 };
 
-export const getCourseById = (req: Request, res: Response) => {
+export const getCourseById = async (req: Request, res: Response) => {
   try {
-    const courses = readFromFile(coursesFilePath);
-    const courseId = parseInt(req.params.id, 10);
+    const courses: Course[] = await readFromFile(coursesFilePath);
+    const courseId: number = parseInt(req.params.id, 10);
 
     const course: Course = courses.find(c => c.id === courseId);
 
@@ -55,11 +55,11 @@ export const getCourseById = (req: Request, res: Response) => {
   }
 };
 
-export const createCourse = (req: Request, res: Response) => {
+export const createCourse = async (req: Request, res: Response) => {
   try {
-    const coursesData = readFromFile(coursesFilePath);
-    const modulesData = readFromFile(moduleFilePath);
-    const lessonsData = readFromFile(lessonsFilePath);
+    const coursesData: Course[] = await readFromFile(coursesFilePath);
+    const modulesData: Module[] = await readFromFile(moduleFilePath);
+    const lessonsData: Lesson[] = await readFromFile(lessonsFilePath);
 
     const newCourse: Course = {
       id: coursesData.length > 0 ? coursesData[coursesData.length - 1].id + 1 : 1,
@@ -99,10 +99,10 @@ export const createCourse = (req: Request, res: Response) => {
   }
 };
 
-export const updateCourseByID = (req: Request, res: Response) => {
+export const updateCourseByID = async (req: Request, res: Response) => {
   try {
-    const courses = readFromFile(coursesFilePath);
-    const courseId = parseInt(req.params.id, 10);
+    const courses: Course[] = await readFromFile(coursesFilePath);
+    const courseId: number = parseInt(req.params.id, 10);
     const courseIndex = courses.findIndex(c => c.id === courseId);
 
     if (courseIndex === -1){
@@ -124,10 +124,10 @@ export const updateCourseByID = (req: Request, res: Response) => {
   }
 }
 
-export const deleteCourse = (req: Request, res: Response) => {
+export const deleteCourse = async (req: Request, res: Response) => {
   try {
-    const courses = readFromFile(coursesFilePath);
-    const courseId = parseInt(req.params.id, 10);
+    const courses: Course[] = await readFromFile(coursesFilePath);
+    const courseId: number = parseInt(req.params.id, 10);
 
     const courseIndex: number = courses.findIndex(c => c.id === courseId);
 

@@ -32,7 +32,7 @@ describe("createLessonInModule", () => {
         jest.clearAllMocks();
     });
 
-    it("should return 404 if the module is not found", () => {
+    it("should return 404 if the module is not found", async () => {
         const mockCourses: Course[] = [
             { id: 1, title: "Course 1", description: "Description", modules: [] },
         ];
@@ -44,34 +44,34 @@ describe("createLessonInModule", () => {
             if (filePath === moduleFilePath) return []; // No modules
         });
 
-        createLessonInModule(req as Request, res as Response);
+        await createLessonInModule(req as Request, res as Response);
 
         expect(statusMock).toHaveBeenCalledWith(404);
         expect(jsonMock).toHaveBeenCalledWith({ message: 'Module not found.' });
     });
 
-    it("should return 404 if the course is not found", () => {
+    it("should return 404 if the course is not found", async () => {
         const mockModule: Module = { id: 1, title: "Module 1", lessons: [] };
         const mockLessons: Lesson[] = [];
 
         (readFromFile as jest.Mock).mockImplementation((filePath) => {
-            if (filePath === coursesFilePath) return []; // No courses
+            if (filePath === coursesFilePath) return [];
             if (filePath === lessonsFilePath) return mockLessons;
             if (filePath === moduleFilePath) return [mockModule];
         });
 
-        createLessonInModule(req as Request, res as Response);
+        await createLessonInModule(req as Request, res as Response);
 
         expect(statusMock).toHaveBeenCalledWith(404);
         expect(jsonMock).toHaveBeenCalledWith({ message: 'Course not found.' });
     });
 
-    it("should handle errors and return 500", () => {
+    it("should handle errors and return 500", async () => {
         (readFromFile as jest.Mock).mockImplementation(() => {
             throw new Error("Unexpected error");
         });
 
-        createLessonInModule(req as Request, res as Response);
+        await createLessonInModule(req as Request, res as Response);
 
         expect(statusMock).toHaveBeenCalledWith(500);
         expect(jsonMock).toHaveBeenCalledWith({ message: "Internal Server Error." });

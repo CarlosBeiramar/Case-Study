@@ -25,7 +25,7 @@ describe("getSpecificCourseModule", () => {
     jest.clearAllMocks();
   });
 
-  it("should return the specific module when the course and module are found", () => {
+  it("should return the specific module when the course and module are found", async () => {
     const mockModule: Module = { id: 1, title: "Module 1", lessons: [] };
 
     const mockCourses: Course[] = [
@@ -35,13 +35,13 @@ describe("getSpecificCourseModule", () => {
 
     (readFromFile as jest.Mock).mockReturnValue(mockCourses);
 
-    getSpecificCourseModule(req as Request, res as Response);
+    await getSpecificCourseModule(req as Request, res as Response);
 
     expect(statusMock).toHaveBeenCalledWith(200);
     expect(jsonMock).toHaveBeenCalledWith(mockModule);
   });
 
-  it("should return 404 if the course is not found", () => {
+  it("should return 404 if the course is not found", async () => {
     const mockCourses: Course[] = [
       { id: 1, title: "Course 1", description: "Description", modules: [] },
     ];
@@ -50,26 +50,26 @@ describe("getSpecificCourseModule", () => {
 
     req.params.courseId = '2';
 
-    getSpecificCourseModule(req as Request, res as Response);
+    await getSpecificCourseModule(req as Request, res as Response);
 
     expect(statusMock).toHaveBeenCalledWith(404);
     expect(jsonMock).toHaveBeenCalledWith({ message: 'Course or modules not found.' });
   });
 
-  it("should return 404 if the course has no modules", () => {
+  it("should return 404 if the course has no modules", async () => {
     const mockCourses: Course[] = [
       { id: 1, title: "Course 1", description: "Description", modules: [] },
     ];
 
     (readFromFile as jest.Mock).mockReturnValue(mockCourses);
 
-    getSpecificCourseModule(req as Request, res as Response);
+    await getSpecificCourseModule(req as Request, res as Response);
 
     expect(statusMock).toHaveBeenCalledWith(404);
     expect(jsonMock).toHaveBeenCalledWith({ message: 'Course or modules not found.' });
   });
 
-  it("should return 404 if the module is not found", () => {
+  it("should return 404 if the module is not found", async () => {
     const mockCourses: Course[] = [
       { id: 1, title: "Course 1", description: "Description", modules: [{ id: 1, title: "Module 1", lessons: [] }] },
     ];
@@ -78,7 +78,7 @@ describe("getSpecificCourseModule", () => {
 
     req.params.moduleId = '2';
 
-    getSpecificCourseModule(req as Request, res as Response);
+    await getSpecificCourseModule(req as Request, res as Response);
 
     expect(statusMock).toHaveBeenCalledWith(404);
     expect(jsonMock).toHaveBeenCalledWith({ message: 'Module not found.' });

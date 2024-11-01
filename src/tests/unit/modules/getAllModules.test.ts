@@ -14,7 +14,7 @@ describe("getCourseModules", () => {
   beforeEach(() => {
     req = {
       params: { courseId: '1' },
-      query: { page: '1', limit: '2' } // Set default page and limit for pagination tests
+      query: { page: '1', limit: '2' }
     };
     statusMock = jest.fn().mockReturnThis();
     jsonMock = jest.fn();
@@ -25,7 +25,7 @@ describe("getCourseModules", () => {
     jest.clearAllMocks();
   });
 
-  it("should return paginated course modules when the course is found", () => {
+  it("should return paginated course modules when the course is found", async () => {
     const mockModules = [
       { id: 1, title: "Module 1", lessons: [] },
       { id: 2, title: "Module 2", lessons: [] },
@@ -38,18 +38,18 @@ describe("getCourseModules", () => {
 
     (readFromFile as jest.Mock).mockReturnValue(mockCourses);
 
-    getCourseModules(req as Request, res as Response);
+    await getCourseModules(req as Request, res as Response);
 
     expect(statusMock).toHaveBeenCalledWith(200);
     expect(jsonMock).toHaveBeenCalledWith({
       page: 1,
       limit: 2,
       totalModules: mockModules.length,
-      modules: mockModules.slice(0, 2) // Expect only the first 2 modules based on limit
+      modules: mockModules.slice(0, 2)
     });
   });
 
-  it("should return 404 if the course is not found", () => {
+  it("should return 404 if the course is not found", async () => {
     const mockCourses: Course[] = [
       { id: 1, title: "Course 1", description: "Description", modules: [] },
     ];
@@ -58,31 +58,31 @@ describe("getCourseModules", () => {
 
     req.params.courseId = '2';
 
-    getCourseModules(req as Request, res as Response);
+    await getCourseModules(req as Request, res as Response);
 
     expect(statusMock).toHaveBeenCalledWith(404);
     expect(jsonMock).toHaveBeenCalledWith({ message: 'Course or modules not found.' });
   });
 
-  it("should return 404 if the course has no modules", () => {
+  it("should return 404 if the course has no modules", async () => {
     const mockCourses: Course[] = [
       { id: 1, title: "Course 1", description: "Description", modules: [] },
     ];
 
     (readFromFile as jest.Mock).mockReturnValue(mockCourses);
 
-    getCourseModules(req as Request, res as Response);
+    await getCourseModules(req as Request, res as Response);
 
     expect(statusMock).toHaveBeenCalledWith(404);
     expect(jsonMock).toHaveBeenCalledWith({ message: 'Course or modules not found.' });
   });
 
-  it("should handle errors and return 500", () => {
+  it("should handle errors and return 500", async () => {
     (readFromFile as jest.Mock).mockImplementation(() => {
       throw new Error("File read error");
     });
 
-    getCourseModules(req as Request, res as Response);
+    await getCourseModules(req as Request, res as Response);
 
     expect(statusMock).toHaveBeenCalledWith(500);
     expect(jsonMock).toHaveBeenCalledWith({ message: 'Internal Server Error.' });

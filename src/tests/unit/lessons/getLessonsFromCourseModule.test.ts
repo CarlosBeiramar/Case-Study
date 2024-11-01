@@ -27,7 +27,7 @@ describe("getLessonsFromCourseModule", () => {
         jest.clearAllMocks();
     });
 
-    it("should return paginated lessons of a specific module in a course", () => {
+    it("should return paginated lessons of a specific module in a course", async () => {
         const mockLessons: Lesson[] = [
             { id: 1, title: "Lesson 1", description: "test", topics: [], content: [] },
             { id: 2, title: "Lesson 2", description: "test", topics: [], content: [] },
@@ -41,7 +41,7 @@ describe("getLessonsFromCourseModule", () => {
 
         (readFromFile as jest.Mock).mockImplementation(() => mockCourses);
 
-        getLessonsFromCourseModule(req as Request, res as Response);
+        await getLessonsFromCourseModule(req as Request, res as Response);
 
         expect(statusMock).toHaveBeenCalledWith(200);
         expect(jsonMock).toHaveBeenCalledWith({
@@ -52,16 +52,16 @@ describe("getLessonsFromCourseModule", () => {
         });
     });
 
-    it("should return 404 if the course is not found", () => {
+    it("should return 404 if the course is not found", async () => {
         (readFromFile as jest.Mock).mockReturnValue([]);
 
-        getLessonsFromCourseModule(req as Request, res as Response);
+        await getLessonsFromCourseModule(req as Request, res as Response);
 
         expect(statusMock).toHaveBeenCalledWith(404);
         expect(jsonMock).toHaveBeenCalledWith({ message: 'Course or modules not found' });
     });
 
-    it("should return 404 if the module is not found in the course", () => {
+    it("should return 404 if the module is not found in the course", async () => {
         const mockModule: Module = { id: 1, title: "Module 1", lessons: [] };
         const mockCourses: Course[] = [
             { id: 1, title: "Course 1", description: "Description", modules: [mockModule] },
@@ -69,18 +69,18 @@ describe("getLessonsFromCourseModule", () => {
 
         (readFromFile as jest.Mock).mockReturnValue(mockCourses);
 
-        getLessonsFromCourseModule(req as Request, res as Response);
+        await getLessonsFromCourseModule(req as Request, res as Response);
 
         expect(statusMock).toHaveBeenCalledWith(404);
         expect(jsonMock).toHaveBeenCalledWith({ message: 'Modules or lessons not found.' });
     });
 
-    it("should handle errors and return 500 status", () => {
+    it("should handle errors and return 500 status", async () => {
         (readFromFile as jest.Mock).mockImplementation(() => {
             throw new Error("Unexpected error");
         });
 
-        getLessonsFromCourseModule(req as Request, res as Response);
+        await getLessonsFromCourseModule(req as Request, res as Response);
 
         expect(statusMock).toHaveBeenCalledWith(500);
         expect(jsonMock).toHaveBeenCalledWith({ message: 'Internal Server Error' });

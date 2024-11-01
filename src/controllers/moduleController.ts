@@ -3,11 +3,12 @@ import { Request, RequestHandler, Response } from "express";
 import { readFromFile, moduleFilePath, coursesFilePath, writeToFile} from '../utils/FileHandlers';
 import { Course } from "../models/Course";
 import logger from '../utils/logger';
+import { Cipher } from "crypto";
 
-export const getCourseModules = (req: Request, res: Response) => {
+export const getCourseModules = async (req: Request, res: Response) => {
   try {
-    const courseId = parseInt(req.params.courseId, 10);
-    const coursesData = readFromFile(coursesFilePath);
+    const coursesData: Course[] = await readFromFile(coursesFilePath);
+    const courseId: number = parseInt(req.params.courseId, 10);
 
     const page = parseInt(req.query.page as string, 10) || 1;
     const limit = parseInt(req.query.limit as string, 10) || 10;
@@ -32,12 +33,12 @@ export const getCourseModules = (req: Request, res: Response) => {
   }
 }
 
-export const getSpecificCourseModule = (req: Request, res: Response) => {
+export const getSpecificCourseModule = async (req: Request, res: Response) => {
   try {
-    const courseId = parseInt(req.params.courseId, 10);
-    const moduleId = parseInt(req.params.moduleId, 10);
+    const courseId: number = parseInt(req.params.courseId, 10);
+    const moduleId: number = parseInt(req.params.moduleId, 10);
 
-    const coursesData = readFromFile(coursesFilePath);
+    const coursesData: Course[] = await readFromFile(coursesFilePath);
 
     const course: Course | undefined = coursesData.find((course) => course.id === courseId);
 
@@ -61,12 +62,12 @@ export const getSpecificCourseModule = (req: Request, res: Response) => {
   }
 }
 
-export const createNewModule = (req: Request, res: Response) => {
+export const createNewModule = async (req: Request, res: Response) => {
   try {
     const courseId = parseInt(req.params.courseId, 10);
 
-    const coursesData = readFromFile(coursesFilePath);
-    const modulesData = readFromFile(moduleFilePath);
+    const coursesData: Course[] = await readFromFile(coursesFilePath);
+    const modulesData: Module[] = await readFromFile(moduleFilePath);
 
     const newModule: Module = {
       id: modulesData.length > 0 ? modulesData[modulesData.length - 1].id + 1 : 1,
@@ -95,13 +96,13 @@ export const createNewModule = (req: Request, res: Response) => {
   }
 }
 
-export const updateModule = (req: Request, res: Response) => {
+export const updateModule = async (req: Request, res: Response) => {
   try {
     const courseId = parseInt(req.params.courseId, 10);
     const moduleId = parseInt(req.params.moduleId, 10);
 
-    const coursesData = readFromFile(coursesFilePath);
-    const modulesData = readFromFile(moduleFilePath);
+    const coursesData: Course[] = await readFromFile(coursesFilePath);
+    const modulesData: Module[] = await readFromFile(moduleFilePath);
 
     const module: Module = modulesData.find((module) => module.id === moduleId);
 
@@ -142,13 +143,13 @@ export const updateModule = (req: Request, res: Response) => {
   }
 }
 
-export const deleteModule = (req: Request, res: Response) => {
+export const deleteModule = async (req: Request, res: Response) => {
   try {
     const courseId = parseInt(req.params.courseId, 10);
     const moduleId = parseInt(req.params.moduleId, 10);
 
-    const coursesData = readFromFile(coursesFilePath);
-    const modulesData = readFromFile(moduleFilePath);
+    const coursesData: Course[] = await readFromFile(coursesFilePath);
+    const modulesData: Module[] = await readFromFile(moduleFilePath);
 
     const moduleIndex: number = modulesData.findIndex((module) => module.id === moduleId);
 

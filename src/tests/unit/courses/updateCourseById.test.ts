@@ -28,7 +28,7 @@ describe("updateCourseByID", () => {
     jest.clearAllMocks();
   });
 
-  it("should update the course when found", () => {
+  it("should update the course when found", async () => {
     const mockCourses: Course[] = [
       { id: 1, title: "Old Title", description: "Old Description", modules: [] },
       { id: 2, title: "Another Course", description: "Another Description", modules: [] },
@@ -37,34 +37,34 @@ describe("updateCourseByID", () => {
     (readFromFile as jest.Mock).mockReturnValue(mockCourses);
     (writeToFile as jest.Mock).mockImplementation(() => {});
 
-    updateCourseByID(req as Request, res as Response);
+    await updateCourseByID(req as Request, res as Response);
 
     expect(statusMock).toHaveBeenCalledWith(204);
     expect(mockCourses[0].title).toBe("Updated Course Title");
     expect(writeToFile).toHaveBeenCalledWith(coursesFilePath, mockCourses);
   });
 
-  it("should return 404 if the course is not found", () => {
+  it("should return 404 if the course is not found", async () => {
     const mockCourses: Course[] = [
       { id: 1, title: "Old Title", description: "Old Description", modules: [] },
     ];
 
     (readFromFile as jest.Mock).mockReturnValue(mockCourses);
 
-    req.params.id = '2'; // Course ID that does not exist
+    req.params.id = '2';
 
-    updateCourseByID(req as Request, res as Response);
+    await updateCourseByID(req as Request, res as Response);
 
     expect(statusMock).toHaveBeenCalledWith(404);
     expect(jsonMock).toHaveBeenCalledWith({ message: "Course not found" });
   });
 
-  it("should handle errors and return 500", () => {
+  it("should handle errors and return 500", async () => {
     (readFromFile as jest.Mock).mockImplementation(() => {
       throw new Error("File read error");
     });
 
-    updateCourseByID(req as Request, res as Response);
+    await updateCourseByID(req as Request, res as Response);
 
     expect(statusMock).toHaveBeenCalledWith(500);
     expect(jsonMock).toHaveBeenCalledWith({ message: "Internal Server Error" });

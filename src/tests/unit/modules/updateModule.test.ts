@@ -29,7 +29,7 @@ describe("updateModule", () => {
     jest.clearAllMocks();
   });
 
-  it("should update an existing module and return it", () => {
+  it("should update an existing module and return it", async () => {
     const mockModule: Module = { id: 1, title: "Old Module Title", lessons: [] };
     const mockCourses: Course[] = [
       { id: 1, title: "Course 1", description: "Description", modules: [mockModule] },
@@ -43,14 +43,14 @@ describe("updateModule", () => {
 
     (writeToFile as jest.Mock).mockImplementation(() => {});
 
-    updateModule(req as Request, res as Response);
+    await updateModule(req as Request, res as Response);
 
     expect(statusMock).toHaveBeenCalledWith(200);
     expect(jsonMock).toHaveBeenCalledWith({ module: { ...mockModule, title: "Updated Module Title", lessons: [] } });
     expect(mockModules[0].title).toBe("Updated Module Title");
   });
 
-  it("should return 404 if the module is not found", () => {
+  it("should return 404 if the module is not found", async () => {
     const mockCourses: Course[] = [
       { id: 1, title: "Course 1", description: "Description", modules: [] },
     ];
@@ -61,13 +61,13 @@ describe("updateModule", () => {
       if (filePath === moduleFilePath) return mockModules;
     });
 
-    updateModule(req as Request, res as Response);
+    await updateModule(req as Request, res as Response);
 
     expect(statusMock).toHaveBeenCalledWith(404);
     expect(jsonMock).toHaveBeenCalledWith({ message: 'Module not found.' });
   });
 
-  it("should return 404 if the course is not found", () => {
+  it("should return 404 if the course is not found", async () => {
     const mockModule: Module = { id: 1, title: "Old Module Title", lessons: [] };
     const mockCourses: Course[] = [];
     const mockModules: Module[] = [mockModule];
@@ -77,13 +77,13 @@ describe("updateModule", () => {
       if (filePath === moduleFilePath) return mockModules;
     });
 
-    updateModule(req as Request, res as Response);
+    await updateModule(req as Request, res as Response);
 
     expect(statusMock).toHaveBeenCalledWith(404);
     expect(jsonMock).toHaveBeenCalledWith({ message: "Course not found." });
   });
 
-  it("should return 404 if the module is not found in the course", () => {
+  it("should return 404 if the module is not found in the course", async () => {
     const mockCourses: Course[] = [
       { id: 1, title: "Course 1", description: "Description", modules: [] },
     ];
@@ -94,18 +94,18 @@ describe("updateModule", () => {
       if (filePath === moduleFilePath) return mockModules;
     });
 
-    updateModule(req as Request, res as Response);
+    await updateModule(req as Request, res as Response);
 
     expect(statusMock).toHaveBeenCalledWith(404);
     expect(jsonMock).toHaveBeenCalledWith({ message: 'Module not found.' });
   });
 
-  it("should handle errors and return 500", () => {
+  it("should handle errors and return 500", async () => {
     (readFromFile as jest.Mock).mockImplementation(() => {
       throw new Error("File read error");
     });
 
-    updateModule(req as Request, res as Response);
+    await updateModule(req as Request, res as Response);
 
     expect(statusMock).toHaveBeenCalledWith(500);
     expect(jsonMock).toHaveBeenCalledWith({ message: 'Internal Server Error.' });

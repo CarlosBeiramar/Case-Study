@@ -5,7 +5,7 @@ import { Module } from 'src/models/Module';
 import { Lesson } from 'src/models/Lesson';
 import logger from '../utils/logger';
 
-export const getLessonsFromCourseModule = (req: Request, res: Response) => {
+export const getLessonsFromCourseModule = async (req: Request, res: Response) => {
     try {
         const courseId = parseInt(req.params.courseId, 10);
         const moduleId = parseInt(req.params.moduleId, 10);
@@ -13,7 +13,7 @@ export const getLessonsFromCourseModule = (req: Request, res: Response) => {
         const page = parseInt(req.query.page as string, 10) || 1;
         const limit = parseInt(req.query.limit as string, 10) || 10;
 
-        const coursesData = readFromFile(coursesFilePath);
+        const coursesData: Course[] = await readFromFile(coursesFilePath);
 
         const course: Course = coursesData.find((course) => course.id === courseId);
 
@@ -42,13 +42,13 @@ export const getLessonsFromCourseModule = (req: Request, res: Response) => {
     }
 }
 
-export const getSpecificLessonsFromCourseModule = (req: Request, res: Response) => {
+export const getSpecificLessonsFromCourseModule = async (req: Request, res: Response) => {
     try {
         const courseId = parseInt(req.params.courseId, 10);
         const moduleId = parseInt(req.params.moduleId, 10);
         const lessonId = parseInt(req.params.lessonId, 10);
 
-        const coursesData = readFromFile(coursesFilePath);
+        const coursesData: Course[] = await readFromFile(coursesFilePath);
 
         const course: Course = coursesData.find((course: Course) => course.id === courseId);
 
@@ -73,14 +73,14 @@ export const getSpecificLessonsFromCourseModule = (req: Request, res: Response) 
     }
 }
 
-export const createLessonInModule = (req: Request, res: Response) => {
+export const createLessonInModule = async (req: Request, res: Response) => {
     try {
         const courseId = parseInt(req.params.courseId, 10);
         const moduleId = parseInt(req.params.moduleId, 10);
 
-        const coursesData: Course[] = readFromFile(coursesFilePath);
-        const lessonData: Lesson[] = readFromFile(lessonsFilePath);
-        const moduleData: Module[] = readFromFile(moduleFilePath);
+        const coursesData: Course[] = await readFromFile(coursesFilePath);
+        const lessonData: Lesson[] = await readFromFile(lessonsFilePath);
+        const moduleData: Module[] = await readFromFile(moduleFilePath);
 
         const newLesson: Lesson = {
             id: lessonData.length > 0 ? lessonData[lessonData.length - 1].id : 1,
@@ -123,15 +123,15 @@ export const createLessonInModule = (req: Request, res: Response) => {
     }
 }
 
-export const updateLessonInModule = (req: Request, res: Response) => {
+export const updateLessonInModule = async (req: Request, res: Response) => {
     try {
         const courseId = parseInt(req.params.courseId, 10);
         const moduleId = parseInt(req.params.moduleId, 10);
         const lessonId = parseInt(req.params.lessonId, 10);
 
-        const coursesData: Course[] = readFromFile(coursesFilePath);
-        const lessonData: Lesson[] = readFromFile(lessonsFilePath);
-        const moduleData: Module[] = readFromFile(moduleFilePath);
+        const coursesData: Course[] = await readFromFile(coursesFilePath);
+        const lessonData: Lesson[] = await readFromFile(lessonsFilePath);
+        const moduleData: Module[] = await readFromFile(moduleFilePath);
 
         const updateLesson = (lesson: Lesson) => {
             lesson.title = req.body.title || lesson.title;
@@ -195,15 +195,15 @@ export const updateLessonInModule = (req: Request, res: Response) => {
     }
 };
 
-export const deleteLesson = (req: Request, res: Response) => {
+export const deleteLesson = async (req: Request, res: Response) => {
     try {
         const courseId = parseInt(req.params.courseId, 10);
         const moduleId = parseInt(req.params.moduleId, 10);
         const lessonId = parseInt(req.params.lessonId, 10);
 
-        const coursesData: Course[] = readFromFile(coursesFilePath);
-        const lessonData: Lesson[] = readFromFile(lessonsFilePath);
-        const moduleData: Module[] = readFromFile(moduleFilePath);
+        const coursesData: Course[] = await readFromFile(coursesFilePath);
+        const lessonData: Lesson[] = await readFromFile(lessonsFilePath);
+        const moduleData: Module[] = await readFromFile(moduleFilePath);
 
         const lessonIndex = lessonData.findIndex(lesson => lesson.id === lessonId);
         if (lessonIndex === -1) {

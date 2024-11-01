@@ -29,7 +29,7 @@ describe("createNewModule", () => {
     jest.clearAllMocks();
   });
 
-  it("should create a new module and return it", () => {
+  it("should create a new module and return it", async () => {
     const mockModule: Module = { id: 1, title: "New Module", lessons: [] };
     const mockCourses: Course[] = [
       { id: 1, title: "Course 1", description: "Description", modules: [] },
@@ -43,7 +43,7 @@ describe("createNewModule", () => {
 
     (writeToFile as jest.Mock).mockImplementation(() => {});
 
-    createNewModule(req as Request, res as Response);
+    await createNewModule(req as Request, res as Response);
 
     expect(statusMock).toHaveBeenCalledWith(201);
     expect(jsonMock).toHaveBeenCalledWith(mockModule);
@@ -51,7 +51,7 @@ describe("createNewModule", () => {
     expect(mockCourses[0].modules).toContainEqual(mockModule);
   });
 
-  it("should return 404 if the course is not found", () => {
+  it("should return 404 if the course is not found", async () => {
     const mockCourses: Course[] = [];
     const mockModules: Module[] = [];
 
@@ -60,18 +60,18 @@ describe("createNewModule", () => {
       if (filePath === moduleFilePath) return mockModules;
     });
 
-    createNewModule(req as Request, res as Response);
+    await createNewModule(req as Request, res as Response);
 
     expect(statusMock).toHaveBeenCalledWith(404);
     expect(jsonMock).toHaveBeenCalledWith({ message: 'Course not found.' });
   });
 
-  it("should handle errors and return 500", () => {
+  it("should handle errors and return 500", async () => {
     (readFromFile as jest.Mock).mockImplementation(() => {
       throw new Error("File read error");
     });
 
-    createNewModule(req as Request, res as Response);
+    await createNewModule(req as Request, res as Response);
 
     expect(statusMock).toHaveBeenCalledWith(500);
     expect(jsonMock).toHaveBeenCalledWith({ message: 'Internal Server Error.' });

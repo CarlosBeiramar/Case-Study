@@ -11,7 +11,7 @@ describe("getAllCourses", () => {
   let res: Partial<Response>;
 
   beforeEach(() => {
-    req = { query: { page: "1", limit: "2" } }; // Default page and limit for pagination tests
+    req = { query: { page: "1", limit: "2" } };
     res = {
       status: jest.fn().mockReturnThis(),
       json: jest.fn(),
@@ -22,7 +22,7 @@ describe("getAllCourses", () => {
     jest.clearAllMocks();
   });
 
-  it("should return paginated courses with a 200 status when courses are available", () => {
+  it("should return paginated courses with a 200 status when courses are available", async () => {
     const mockCourses = [
       { id: 1, title: "Course 1", description: "Description 1" },
       { id: 2, title: "Course 2", description: "Description 2" },
@@ -31,7 +31,7 @@ describe("getAllCourses", () => {
 
     (readFromFile as jest.Mock).mockReturnValue(mockCourses);
 
-    getAllCourses(req as Request, res as Response);
+    await getAllCourses(req as Request, res as Response);
 
     expect(readFromFile).toHaveBeenCalledWith(coursesFilePath);
     expect(res.status).toHaveBeenCalledWith(200);
@@ -43,17 +43,17 @@ describe("getAllCourses", () => {
     });
   });
 
-  it("should return a 404 status with an error message if no courses are found", () => {
+  it("should return a 404 status with an error message if no courses are found", async () => {
     (readFromFile as jest.Mock).mockReturnValue([]);
 
-    getAllCourses(req as Request, res as Response);
+    await getAllCourses(req as Request, res as Response);
 
     expect(readFromFile).toHaveBeenCalledWith(coursesFilePath);
     expect(res.status).toHaveBeenCalledWith(404);
     expect(res.json).toHaveBeenCalledWith({ message: "Course not found." });
   });
 
-  it("should handle a custom page and limit in the request query", () => {
+  it("should handle a custom page and limit in the request query", async () => {
     const mockCourses = [
       { id: 1, title: "Course 1", description: "Description 1" },
       { id: 2, title: "Course 2", description: "Description 2" },
@@ -64,7 +64,7 @@ describe("getAllCourses", () => {
     (readFromFile as jest.Mock).mockReturnValue(mockCourses);
     req.query = { page: "2", limit: "2" };
 
-    getAllCourses(req as Request, res as Response);
+    await getAllCourses(req as Request, res as Response);
 
     expect(res.status).toHaveBeenCalledWith(200);
     expect(res.json).toHaveBeenCalledWith({
@@ -75,12 +75,12 @@ describe("getAllCourses", () => {
     });
   });
 
-  it("should return a 500 status with an error message on unexpected errors", () => {
+  it("should return a 500 status with an error message on unexpected errors", async () => {
     (readFromFile as jest.Mock).mockImplementation(() => {
       throw new Error("Unexpected Error");
     });
 
-    getAllCourses(req as Request, res as Response);
+    await getAllCourses(req as Request, res as Response);
 
     expect(res.status).toHaveBeenCalledWith(500);
     expect(res.json).toHaveBeenCalledWith("Internal Server Error.");
