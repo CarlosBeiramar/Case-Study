@@ -48,6 +48,7 @@ Develop a backend system for a Course Management System using TypeScript and Nod
 - [x] Add pagination for listing endpoints.
 - [x] Implement rate limiting to prevent API abuse.
 - [x] Create a Docker configuration for easy deployment.
+- [x] API Documentation: Swagger/OpenAPI
 
 
 ## Getting Started
