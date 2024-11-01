@@ -13,7 +13,7 @@ describe("deleteCourse", () => {
 
   beforeEach(() => {
     req = {
-      params: { id: '1' },
+      params: { courseId: '1' },
     };
     statusMock = jest.fn().mockReturnThis();
     jsonMock = jest.fn();
@@ -37,7 +37,7 @@ describe("deleteCourse", () => {
 
     expect(statusMock).toHaveBeenCalledWith(200);
     expect(jsonMock).toHaveBeenCalledWith({ message: "Deleted successfully." });
-    expect(mockCourses.length).toBe(1); // Check if the course has been removed
+    expect(mockCourses.length).toBe(1);
     expect(writeToFile).toHaveBeenCalledWith(coursesFilePath, mockCourses);
   });
 
@@ -48,7 +48,7 @@ describe("deleteCourse", () => {
 
     (readFromFile as jest.Mock).mockReturnValue(mockCourses);
 
-    req.params.id = '2'; // Course ID that does not exist
+    req.params.courseId = '2';
 
     await deleteCourse(req as Request, res as Response);
 

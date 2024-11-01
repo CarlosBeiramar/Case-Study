@@ -13,7 +13,7 @@ describe("updateCourseByID", () => {
 
   beforeEach(() => {
     req = {
-      params: { id: '1' },
+      params: { courseId: '1' },
       body: {
         title: "Updated Course Title",
         description: "Updated Course Description",
@@ -51,7 +51,7 @@ describe("updateCourseByID", () => {
 
     (readFromFile as jest.Mock).mockReturnValue(mockCourses);
 
-    req.params.id = '2';
+    req.params.courseId = '2';
 
     await updateCourseByID(req as Request, res as Response);
 

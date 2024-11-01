@@ -14,7 +14,7 @@ describe("getCourseById", () => {
   let jsonMock: jest.Mock;
 
   beforeEach(() => {
-    req = { params: { id: '1' } };
+    req = { params: { courseId: '1' } };
     statusMock = jest.fn().mockReturnThis();
     jsonMock = jest.fn();
     res = { status: statusMock, json: jsonMock };

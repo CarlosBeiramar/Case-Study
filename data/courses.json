@@ -5,11 +5,11 @@
     "description": "Dive into advanced web development concepts, focusing on JavaScript frameworks, server-side development, and databases.",
     "modules": [
       {
-        "id": 6,
+        "id": 1,
         "title": "JavaScript Frameworks",
         "lessons": [
           {
-            "id": 8,
+            "id": 1,
             "title": "Introduction to React",
             "description": "Learn the basics of React, a popular JavaScript framework for building user interfaces.",
             "topics": [
@@ -29,7 +29,7 @@
             ]
           },
           {
-            "id": 9,
+            "id": 2,
             "title": "Understanding Vue",
             "description": "Explore Vue.js and how it differs from other JavaScript frameworks.",
             "topics": [
@@ -51,11 +51,11 @@
         ]
       },
       {
-        "id": 7,
+        "id": 2,
         "title": "Server-Side Development",
         "lessons": [
           {
-            "id": 10,
+            "id": 3,
             "title": "Node.js Basics",
             "description": "Learn the fundamentals of Node.js and its role in server-side JavaScript.",
             "topics": [
@@ -75,7 +75,7 @@
             ]
           },
           {
-            "id": 11,
+            "id": 4,
             "title": "Express.js for Web Servers",
             "description": "Get started with Express.js, a Node.js framework for building web servers.",
             "topics": [
@@ -97,11 +97,11 @@
         ]
       },
       {
-        "id": 8,
+        "id": 3,
         "title": "Database Management",
         "lessons": [
           {
-            "id": 12,
+            "id": 5,
             "title": "Introduction to SQL",
             "description": "Learn SQL, the standard language for managing relational databases.",
             "topics": [
@@ -121,7 +121,7 @@
             ]
           },
           {
-            "id": 13,
+            "id": 6,
             "title": "NoSQL Databases",
             "description": "Explore NoSQL databases like MongoDB, designed for unstructured data.",
             "topics": [
@@ -146,142 +146,96 @@
   },
   {
     "id": 2,
-    "title": "Advanced Web Development",
-    "description": "Dive into advanced web development concepts, focusing on JavaScript frameworks, server-side development, and databases.",
+    "title": "Mobile App Development",
+    "description": "Learn the essentials of building mobile applications, including both iOS and Android platforms, with a focus on native and cross-platform development.",
     "modules": [
       {
-        "id": 9,
-        "title": "JavaScript Frameworks",
+        "id": 4,
+        "title": "Introduction to Mobile Development",
         "lessons": [
           {
-            "id": 14,
-            "title": "Introduction to React",
-            "description": "Learn the basics of React, a popular JavaScript framework for building user interfaces.",
+            "id": 7,
+            "title": "Mobile Development Basics",
+            "description": "An overview of mobile platforms, development tools, and app design considerations.",
             "topics": [
-              "React components",
-              "JSX",
-              "State and props"
+              "iOS and Android platforms",
+              "Mobile app lifecycle",
+              "User experience in mobile apps"
             ],
             "content": [
               {
                 "type": "text",
-                "data": "React is a JavaScript library for building user interfaces, maintained by Facebook."
+                "data": "Mobile app development involves creating software applications that run on mobile devices."
               },
               {
                 "type": "video",
-                "data": "https://example.com/react-introduction-video"
+                "data": "https://example.com/mobile-basics-video"
               }
             ]
           },
           {
-            "id": 15,
-            "title": "Understanding Vue",
-            "description": "Explore Vue.js and how it differs from other JavaScript frameworks.",
+            "id": 8,
+            "title": "Designing for Mobile",
+            "description": "Explore the principles of UI/UX design for mobile applications.",
             "topics": [
-              "Vue instances",
-              "Templates",
-              "Vue directives"
+              "Responsive design",
+              "Navigation patterns",
+              "Touch-friendly interfaces"
             ],
             "content": [
               {
                 "type": "text",
-                "data": "Vue.js is an open-source JavaScript framework for building user interfaces and single-page applications."
+                "data": "Mobile design requires a focus on usability and small screen real estate."
               },
               {
                 "type": "video",
-                "data": "https://example.com/vue-overview-video"
+                "data": "https://example.com/mobile-design-video"
               }
             ]
           }
         ]
       },
       {
-        "id": 10,
-        "title": "Server-Side Development",
+        "id": 5,
+        "title": "Cross-Platform Development",
         "lessons": [
           {
-            "id": 16,
-            "title": "Node.js Basics",
-            "description": "Learn the fundamentals of Node.js and its role in server-side JavaScript.",
+            "id": 9,
+            "title": "Getting Started with React Native",
+            "description": "Learn how to build cross-platform mobile applications with React Native.",
             "topics": [
-              "Node.js environment",
-              "Modules and packages",
-              "File system operations"
+              "React Native setup",
+              "Creating components",
+              "Styling and navigation"
             ],
             "content": [
               {
                 "type": "text",
-                "data": "Node.js allows JavaScript to run on the server, offering a fast and scalable solution."
+                "data": "React Native enables developers to use a single codebase for both iOS and Android."
               },
               {
-                "type": "audio",
-                "data": "https://example.com/node-intro-audio"
+                "type": "video",
+                "data": "https://example.com/react-native-intro-video"
               }
             ]
           },
           {
-            "id": 17,
-            "title": "Express.js for Web Servers",
-            "description": "Get started with Express.js, a Node.js framework for building web servers.",
+            "id": 10,
+            "title": "Flutter Basics",
+            "description": "Introduction to Flutter, Google’s toolkit for building natively compiled applications.",
             "topics": [
-              "Setting up a server",
-              "Routing",
-              "Middleware"
+              "Setting up Flutter",
+              "Widgets and layout",
+              "Hot reload and debugging"
             ],
             "content": [
               {
                 "type": "text",
-                "data": "Express.js is a flexible Node.js web application framework that provides tools for building robust servers."
+                "data": "Flutter allows for fast development with a rich set of pre-designed widgets."
               },
               {
                 "type": "video",
-                "data": "https://example.com/express-basics-video"
-              }
-            ]
-          }
-        ]
-      },
-      {
-        "id": 11,
-        "title": "Database Management",
-        "lessons": [
-          {
-            "id": 18,
-            "title": "Introduction to SQL",
-            "description": "Learn SQL, the standard language for managing relational databases.",
-            "topics": [
-              "SQL syntax",
-              "CRUD operations",
-              "Database normalization"
-            ],
-            "content": [
-              {
-                "type": "text",
-                "data": "SQL (Structured Query Language) is used to manage data in relational databases like MySQL and PostgreSQL."
-              },
-              {
-                "type": "video",
-                "data": "https://example.com/sql-intro-video"
-              }
-            ]
-          },
-          {
-            "id": 19,
-            "title": "NoSQL Databases",
-            "description": "Explore NoSQL databases like MongoDB, designed for unstructured data.",
-            "topics": [
-              "Key-value stores",
-              "Document-oriented databases",
-              "Scalability"
-            ],
-            "content": [
-              {
-                "type": "text",
-                "data": "NoSQL databases provide flexible schemas and are suited for large-scale data applications."
-              },
-              {
-                "type": "video",
-                "data": "https://example.com/nosql-databases-video"
+                "data": "https://example.com/flutter-basics-video"
               }
             ]
           }
@@ -291,142 +245,96 @@
   },
   {
     "id": 3,
-    "title": "Advanced Web Development",
-    "description": "Dive into advanced web development concepts, focusing on JavaScript frameworks, server-side development, and databases.",
+    "title": "Cybersecurity Basics",
+    "description": "An introductory course on cybersecurity principles, covering threat types, secure coding practices, and network security.",
     "modules": [
       {
-        "id": 12,
-        "title": "JavaScript Frameworks",
+        "id": 6,
+        "title": "Fundamentals of Cybersecurity",
         "lessons": [
           {
-            "id": 20,
-            "title": "Introduction to React",
-            "description": "Learn the basics of React, a popular JavaScript framework for building user interfaces.",
+            "id": 11,
+            "title": "Understanding Cyber Threats",
+            "description": "Learn about different types of cyber threats and how they impact systems.",
             "topics": [
-              "React components",
-              "JSX",
-              "State and props"
+              "Malware and viruses",
+              "Phishing attacks",
+              "Social engineering"
             ],
             "content": [
               {
                 "type": "text",
-                "data": "React is a JavaScript library for building user interfaces, maintained by Facebook."
+                "data": "Cyber threats are techniques that attackers use to gain unauthorized access to systems."
               },
               {
                 "type": "video",
-                "data": "https://example.com/react-introduction-video"
+                "data": "https://example.com/cyber-threats-video"
               }
             ]
           },
           {
-            "id": 21,
-            "title": "Understanding Vue",
-            "description": "Explore Vue.js and how it differs from other JavaScript frameworks.",
+            "id": 12,
+            "title": "Introduction to Encryption",
+            "description": "Explore the basics of encryption and its role in securing data.",
             "topics": [
-              "Vue instances",
-              "Templates",
-              "Vue directives"
+              "Symmetric and asymmetric encryption",
+              "Encryption algorithms",
+              "Public and private keys"
             ],
             "content": [
               {
                 "type": "text",
-                "data": "Vue.js is an open-source JavaScript framework for building user interfaces and single-page applications."
+                "data": "Encryption is the process of encoding information to prevent unauthorized access."
               },
               {
                 "type": "video",
-                "data": "https://example.com/vue-overview-video"
+                "data": "https://example.com/encryption-intro-video"
               }
             ]
           }
         ]
       },
       {
-        "id": 13,
-        "title": "Server-Side Development",
+        "id": 7,
+        "title": "Secure Coding and Network Security",
         "lessons": [
           {
-            "id": 22,
-            "title": "Node.js Basics",
-            "description": "Learn the fundamentals of Node.js and its role in server-side JavaScript.",
+            "id": 13,
+            "title": "Secure Coding Practices",
+            "description": "Best practices for writing secure code and preventing vulnerabilities.",
             "topics": [
-              "Node.js environment",
-              "Modules and packages",
-              "File system operations"
+              "Input validation",
+              "Error handling",
+              "Avoiding SQL injection"
             ],
             "content": [
               {
                 "type": "text",
-                "data": "Node.js allows JavaScript to run on the server, offering a fast and scalable solution."
+                "data": "Secure coding practices aim to prevent common vulnerabilities in software applications."
               },
               {
-                "type": "audio",
-                "data": "https://example.com/node-intro-audio"
+                "type": "video",
+                "data": "https://example.com/secure-coding-video"
               }
             ]
           },
           {
-            "id": 23,
-            "title": "Express.js for Web Servers",
-            "description": "Get started with Express.js, a Node.js framework for building web servers.",
+            "id": 14,
+            "title": "Network Security Basics",
+            "description": "Understand network security principles and how to protect networks from unauthorized access.",
             "topics": [
-              "Setting up a server",
-              "Routing",
-              "Middleware"
+              "Firewalls",
+              "VPNs",
+              "Intrusion detection systems"
             ],
             "content": [
               {
                 "type": "text",
-                "data": "Express.js is a flexible Node.js web application framework that provides tools for building robust servers."
+                "data": "Network security involves measures to protect data during transmission across networks."
               },
               {
                 "type": "video",
-                "data": "https://example.com/express-basics-video"
-              }
-            ]
-          }
-        ]
-      },
-      {
-        "id": 14,
-        "title": "Database Management",
-        "lessons": [
-          {
-            "id": 24,
-            "title": "Introduction to SQL",
-            "description": "Learn SQL, the standard language for managing relational databases.",
-            "topics": [
-              "SQL syntax",
-              "CRUD operations",
-              "Database normalization"
-            ],
-            "content": [
-              {
-                "type": "text",
-                "data": "SQL (Structured Query Language) is used to manage data in relational databases like MySQL and PostgreSQL."
-              },
-              {
-                "type": "video",
-                "data": "https://example.com/sql-intro-video"
-              }
-            ]
-          },
-          {
-            "id": 25,
-            "title": "NoSQL Databases",
-            "description": "Explore NoSQL databases like MongoDB, designed for unstructured data.",
-            "topics": [
-              "Key-value stores",
-              "Document-oriented databases",
-              "Scalability"
-            ],
-            "content": [
-              {
-                "type": "text",
-                "data": "NoSQL databases provide flexible schemas and are suited for large-scale data applications."
-              },
-              {
-                "type": "video",
-                "data": "https://example.com/nosql-databases-video"
+                "data": "https://example.com/network-security-video"
               }
             ]
           }

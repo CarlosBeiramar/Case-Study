@@ -1,11 +1,10 @@
 import request from "supertest";
 import app from "../../../app";
-import { coursesFilePath, readFromFile, writeToFile, moduleFilePath, lessonsFilePath} from '../../../utils/FileHandlers';
-
+import { coursesFilePath, readFromFile, writeToFile } from '../../../utils/FileHandlers';
 
 jest.mock("../../../utils/FileHandlers");
 
-describe("DELETE /api/courses/:id", () => {
+describe("DELETE /api/courses/:courseId", () => {
   const existingCourse = {
     id: 1,
     title: "Existing Course",

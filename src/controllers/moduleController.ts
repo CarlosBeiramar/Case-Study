@@ -22,10 +22,10 @@ export const getCourseModules = async (req: Request, res: Response) => {
     const startIndex = (page - 1) * limit;
     const endIndex = page * limit;
 
-    const paginatedModules = course.modules.splice(startIndex, endIndex);
+    const paginatedModules = course.modules.slice(startIndex, endIndex);
 
     logger.info(`Getting course modules: Successfully retrieved ${course.modules} modules.`);
-    return res.status(200).json({ page, limit, totalModules: course.modules.length, modules: course.modules});
+    return res.status(200).json({ page, limit, totalModules: course.modules.length, modules: paginatedModules});
   } catch (error) {
     logger.error(`Error getting course modules: ${error.message}`, { stack: error.stack });
     return res.status(500).json({ message: 'Internal Server Error.' });
