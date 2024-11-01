@@ -17,6 +17,7 @@
     "express-rate-limit": "^7.4.1",
     "joi": "^17.13.3",
     "proper-lockfile": "^4.1.2",
+    "supertest": "^7.0.0",
     "swagger-jsdoc": "^6.2.8",
     "swagger-ui-express": "^5.0.1",
     "winston": "^3.15.0"

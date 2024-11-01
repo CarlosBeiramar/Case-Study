@@ -38,7 +38,7 @@ export const getAllCourses = async (req: Request, res: Response) => {
 export const getCourseById = async (req: Request, res: Response) => {
   try {
     const courses: Course[] = await readFromFile(coursesFilePath);
-    const courseId: number = parseInt(req.params.id, 10);
+    const courseId: number = parseInt(req.params.courseId, 10);
 
     const course: Course = courses.find(c => c.id === courseId);
 
@@ -102,7 +102,7 @@ export const createCourse = async (req: Request, res: Response) => {
 export const updateCourseByID = async (req: Request, res: Response) => {
   try {
     const courses: Course[] = await readFromFile(coursesFilePath);
-    const courseId: number = parseInt(req.params.id, 10);
+    const courseId: number = parseInt(req.params.courseId, 10);
     const courseIndex = courses.findIndex(c => c.id === courseId);
 
     if (courseIndex === -1){
@@ -127,7 +127,7 @@ export const updateCourseByID = async (req: Request, res: Response) => {
 export const deleteCourse = async (req: Request, res: Response) => {
   try {
     const courses: Course[] = await readFromFile(coursesFilePath);
-    const courseId: number = parseInt(req.params.id, 10);
+    const courseId: number = parseInt(req.params.courseId, 10);
 
     const courseIndex: number = courses.findIndex(c => c.id === courseId);
 

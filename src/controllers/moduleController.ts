@@ -3,7 +3,6 @@ import { Request, RequestHandler, Response } from "express";
 import { readFromFile, moduleFilePath, coursesFilePath, writeToFile} from '../utils/FileHandlers';
 import { Course } from "../models/Course";
 import logger from '../utils/logger';
-import { Cipher } from "crypto";
 
 export const getCourseModules = async (req: Request, res: Response) => {
   try {
