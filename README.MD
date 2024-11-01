@@ -60,3 +60,15 @@ Develop a backend system for a Course Management System using TypeScript and Nod
 ````
     docker run -p 3000:3000 course_management
 ````
+
+
+### Swagger
+```
+http://localhost:3000/api-docs
+```
+
+### Unit and Integration Tests
+
+````
+npx jest src/tests/
+````
