@@ -7,7 +7,7 @@ const swaggerOptions = {
     info: {
       title: 'Course Management System',
       version: '1.0.0',
-      description: 'API Description',
+      description: 'API Documentation for Course Management System',
     },
     servers: [
       {
